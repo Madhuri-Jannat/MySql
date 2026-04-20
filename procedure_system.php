@@ -31,5 +31,7 @@ if(isset($_POST['btnsubmit'])){
       <input type="text" name="address"> <br> <br>
       <input type="submit" name="btnsubmit" value="Submit">
     </form>
+
+   
 </body>
 </html>
