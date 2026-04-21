@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
 if(isset($_POST['add_submit'])){
     $name=$_POST['name'];
     $price=$_POST['price'];
-    $manufacture_id=$_POST['manufacture_id'];
+    $manufacture_id=$_POST['manufact'];
     $database->query("call add_product('$name','$price','$manufacture_id')");
 
 }
@@ -57,6 +57,27 @@ if(isset($_POST['add_submit'])){
             <input type="submit" name="add_submit" value="add_submit">
         </fieldset>
     </form>
-
+      
+    <table border="2">
+         <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+         </thead>
+         <tbody>
+            <?php
+            $manufac=$database->query("SELECT * FROM manufact_view");
+            while(list($id,$name,$price)= $manufac->fetch_row()){
+             ?>
+              <tr>
+                <td><?php echo $name; ?></td>
+                <td><?php echo $price; ?></td>
+              </tr> 
+              <?php  
+            }
+            ?>
+         </tbody>
+    </table>
 </body>
 </html>
