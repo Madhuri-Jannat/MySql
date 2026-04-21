@@ -14,7 +14,12 @@ if(isset($_POST['add_submit'])){
 
 }
 ?>
-
+<?php
+if(isset($_POST['Delete_product'])){
+    $delete = $_POST['manufact'];
+    $database->query("DELETE FROM manufactures WHERE id = '$delete'");
+}
+?>
 
 
 
@@ -79,5 +84,19 @@ if(isset($_POST['add_submit'])){
             ?>
          </tbody>
     </table>
+    <form action="" method="post">
+        <fieldset>
+        Manufacture_id: <br>
+            <select name="manufact" id="">
+                <?php
+                $manufac=$database->query("select * from manufactures");
+                while(list($id,$name)=$manufac->fetch_row()){
+                    echo "<option value='$id'>$name</option>";
+                }
+                ?>
+            </select>
+            <input type="submit" name="Delete_product" value="Delete">
+            </fieldset>
+    </form>
 </body>
 </html>
